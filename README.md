@@ -2,7 +2,7 @@
 
 https://dodomoneychanger.vercel.app/
 
-Licensed **foreign currency exchange service**.  
+Licensed **foreign currency exchange service located in Trichy**.  
 This project is a **web application** built to display exchange information and enable quick customer contact.
 
 ## Address / Map
