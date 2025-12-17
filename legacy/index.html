@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dodo Money Changer - Reliable currency exchange services in Trichy, Tamil Nadu.">
+    <title>Dodo Money Changer | Trichy's Trusted Forex Service</title>
+
+    <!-- Prevent flash of unstyled content -->
+    <style>
+        body {
+            background: #0a0a0a;
+        }
+
+        #root {
+            opacity: 0;
+            animation: showContent 0.1s ease 0.1s forwards;
+        }
+
+        @keyframes showContent {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="src/favicon.png">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // LoadingScreen Component - Elegant Minimal
+        function LoadingScreen() {
+            const [fadeOut, setFadeOut] = useState(false);
+            const [progress, setProgress] = useState(0);
+
+            useEffect(() => {
+                // Smooth progress animation
+                const interval = setInterval(() => {
+                    setProgress(prev => {
+                        if (prev >= 100) {
+                            clearInterval(interval);
+                            return 100;
+                        }
+                        return prev + 1;
+                    });
+                }, 25);
+
+                // Fade out after animation completes
+                const timer = setTimeout(() => setFadeOut(true), 2800);
+                return () => {
+                    clearInterval(interval);
+                    clearTimeout(timer);
+                };
+            }, []);
+
+            return (
+                <div className={`loading-screen ${fadeOut ? 'fade-out' : ''}`}>
+                    <div className="loading-content">
+                        <h1 className="loading-brand-title">Dodo Money Changer</h1>
+                        <p className="loading-tagline">RBI Licensed | Best Rate | Zero Commission</p>
+                        <div className="loading-spinner"></div>
+                    </div>
+                </div>
+            );
+        }
+
+        // CustomCursor Component
+        function CustomCursor() {
+            useEffect(() => {
+                const cursor = document.querySelector('.cursor');
+                const cursor2 = document.querySelector('.cursor2');
+                const handleMouseMove = (e) => {
+                    if (cursor && cursor2) {
+                        cursor.style.cssText = `left: ${e.clientX}px; top: ${e.clientY}px;`;
+                        cursor2.style.cssText = `left: ${e.clientX}px; top: ${e.clientY}px;`;
+                    }
+                };
+                document.addEventListener('mousemove', handleMouseMove);
+                return () => document.removeEventListener('mousemove', handleMouseMove);
+            }, []);
+
+            return (
+                <>
+                    <div className="cursor"></div>
+                    <div className="cursor2"></div>
+                    <div className="noise-overlay"></div>
+                </>
+            );
+        }
+
+        // Header Component
+        function Header() {
+            return (
+                <header className="header">
+                    <div className="container header-container">
+                        <a href="#" className="logo">
+                            <img src="src/logo.jpg" alt="Dodo Money Changer Logo" className="logo-img" />
+                            Dodo Money Changer
+                        </a>
+                        <nav className="nav">
+                            <ul className="nav-list">
+                                <li className="nav-item"><a href="#hero" className="nav-link active">Home</a></li>
+                                <li className="nav-item"><a href="#services" className="nav-link">Services</a></li>
+                                <li className="nav-item"><a href="#stats" className="nav-link">Stats</a></li>
+                                <li className="nav-item"><a href="#contact" className="nav-link">Contact</a></li>
+                            </ul>
+                        </nav>
+                        <div className="header-actions">
+                            <a href="#contact" className="btn btn-primary btn-sm">Get Rates</a>
+                        </div>
+                    </div>
+                </header>
+            );
+        }
+
+        // Hero Component
+        function Hero() {
+            return (
+                <section className="home" id="hero">
+                    <div className="home-bg"></div>
+                    <div className="container home-container">
+                        <div className="home-data">
+                            <div className="trust-badges">
+                                <span className="trust-badge"><ion-icon name="checkmark-outline"></ion-icon> RBI Licensed</span>
+                                <span className="trust-badge"><ion-icon name="checkmark-outline"></ion-icon> Same Day Service</span>
+                                <span className="trust-badge"><ion-icon name="checkmark-outline"></ion-icon> Fair & Clear Pricing</span>
+                                <span className="trust-badge"><ion-icon name="checkmark-outline"></ion-icon> Home & Airport Delivery</span>
+                            </div>
+                            <h1 className="home-title">Clear Rates. <br /> Quick Exchange. <br /> <em>Zero Confusion.</em></h1>
+                            <p className="home-description">
+                                Reliable currency exchange in Trichy since 2015. We offer competitive rates or hassle-free student forex with home & airport delivery.
+                            </p>
+                            <div className="home-btns">
+                                <a href="#contact" className="btn btn-primary">
+                                    Get Quote <ion-icon name="arrow-forward-outline"></ion-icon>
+                                </a>
+                                <a href="https://wa.me/919384444069" target="_blank" className="btn btn-secondary">
+                                    <ion-icon name="logo-whatsapp"></ion-icon> WhatsApp Us
+                                </a>
+                            </div>
+                        </div>
+                        <div className="home-img-container">
+                            {/* Exchange Rates CTA Card */}
+                            <div className="rates-card">
+                                <div className="rates-header">
+                                    <h3 className="rates-title">Current Exchange Rates</h3>
+                                    <span className="rates-status">
+                                        <span className="status-dot"></span>
+                                        Call for latest rates
+                                    </span>
+                                </div>
+                                <div className="rates-content">
+                                    <h4 className="rates-subtitle">Today's Exchange Rates</h4>
+                                    <p className="rates-text">
+                                        Our rates change based on market conditions to give you the best value.
+                                        Call us to know today's rates and book your exchange.
+                                    </p>
+                                    <div className="rates-buttons">
+                                        <a href="tel:+919384444069" className="rates-btn rates-btn-call">
+                                            <ion-icon name="call"></ion-icon>
+                                            Call Now
+                                        </a>
+                                        <a href="https://wa.me/919384444069" target="_blank" className="rates-btn rates-btn-whatsapp">
+                                            <ion-icon name="logo-whatsapp"></ion-icon>
+                                            WhatsApp
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className="rates-footer">
+                                    <p>Rates updated every day based on market changes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        // Stats Component
+        function Stats() {
+            const stats = [
+                { icon: 'people-outline', number: '100,000+', title: 'Happy Customers' },
+                { icon: 'globe-outline', number: '25+', title: 'Currencies Available' },
+                { icon: 'calendar-outline', number: '9+', title: 'Years Experience' },
+                { icon: 'time-outline', number: '7 Days', title: 'Open Per Week' }
+            ];
+
+            return (
+                <section className="stats section" id="stats">
+                    <div className="container stats-container grid">
+                        {stats.map((stat, index) => (
+                            <div className={`stats-item reveal-scale stagger-${index + 1}`} key={index}>
+                                <div className="stats-icon"><ion-icon name={stat.icon}></ion-icon></div>
+                                <h3 className="stats-number">{stat.number}</h3>
+                                <p className="stats-title">{stat.title}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        // Services Component
+        function Services() {
+            const services = [
+                {
+                    icon: 'cash-outline',
+                    title: 'Currency Exchange',
+                    features: ['25+ Currencies Available', 'Current Market Rates', 'Same-day Service', 'Zero Hidden Charges']
+                },
+                {
+                    icon: 'school-outline',
+                    title: 'Student & Travel Forex',
+                    features: ['Forex for Students & Tourists', 'Travel Cards Available', 'Tour Package Currency', 'Competitive Travel Rates']
+                },
+                {
+                    icon: 'airplane-outline',
+                    title: 'Home & Airport Delivery',
+                    features: ['Secure Transport', 'Flexible Timing', 'Airport Handover', 'No Delivery Charges']
+                }
+            ];
+
+            return (
+                <section className="services section" id="services">
+                    <h2 className="section-title">Our Services</h2>
+                    <div className="container services-container grid">
+                        {services.map((service, index) => (
+                            <div className={`services-card reveal stagger-${index + 1}`} key={index}>
+                                <div className="services-icon"><ion-icon name={service.icon}></ion-icon></div>
+                                <h3 className="services-title">{service.title}</h3>
+                                <ul className="services-list">
+                                    {service.features.map((feature, idx) => (
+                                        <li key={idx}><ion-icon name="checkmark-circle-outline"></ion-icon> {feature}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        // Contact Component
+        function Contact() {
+            const contactInfo = [
+                { icon: 'location-outline', label: 'Address', data: 'No 14, Ground Floor, Nawab Walaja Complex, N.S.B Road, Singarathope, Trichy 620002' },
+                { icon: 'call-outline', label: 'Phone', data: '+91 93844 44069' },
+                { icon: 'mail-outline', label: 'Email', data: 'dodomoneychanger@gmail.com' },
+                { icon: 'time-outline', label: 'Business Hours', data: 'Mon - Sun: 9:00 AM to 9:30 PM' }
+            ];
+
+            const socialLinks = [
+                { icon: 'logo-instagram', url: 'https://www.instagram.com/dodomoneychanger/' },
+                { icon: 'logo-linkedin', url: 'https://in.linkedin.com/company/dodomoneychanger' },
+                { icon: 'logo-whatsapp', url: 'https://wa.me/919384444069' }
+            ];
+
+            return (
+                <section className="contact section" id="contact">
+                    <h2 className="section-title">Contact Us</h2>
+                    <div className="container contact-container grid">
+                        <div className="contact-info">
+                            <h3 className="contact-subtitle">Get in Touch</h3>
+                            <p className="contact-description">To confirm your rates or enquire, you can book via call.</p>
+                            <div className="contact-content">
+                                <div className="contact-item">
+                                    <div className="contact-icon"><ion-icon name="location-outline"></ion-icon></div>
+                                    <div>
+                                        <h4 className="contact-label">Address</h4>
+                                        <a href="https://www.google.com/maps/dir//No+14,+Ground+floor,+Nawab+Walajah+Shopping+Mall,+NSB+Rd,+behind+Rathna+Stores,+Singarathope,+Tharanallur,+Tiruchirappalli,+Tamil+Nadu+620002/@10.4595456,79.2199168,10z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3baaf568e520086b:0xf2da61cc28adbf0b!2m2!1d78.6948533!2d10.8259714?entry=ttu" target="_blank" rel="noopener noreferrer" className="contact-data">
+                                            No 14, Ground Floor, Nawab Walaja Complex, N.S.B Road, Singarathope, Trichy 620002
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div className="contact-item">
+                                    <div className="contact-icon"><ion-icon name="call-outline"></ion-icon></div>
+                                    <div>
+                                        <h4 className="contact-label">Phone</h4>
+                                        <a href="tel:+919384444069" className="contact-data">+91 93844 44069</a>
+                                    </div>
+                                </div>
+
+                                <div className="contact-item">
+                                    <div className="contact-icon"><ion-icon name="mail-outline"></ion-icon></div>
+                                    <div>
+                                        <h4 className="contact-label">Email</h4>
+                                        <a href="mailto:dodomoneychanger@gmail.com" className="contact-data">dodomoneychanger@gmail.com</a>
+                                    </div>
+                                </div>
+
+                                <div className="contact-item">
+                                    <div className="contact-icon"><ion-icon name="time-outline"></ion-icon></div>
+                                    <div>
+                                        <h4 className="contact-label">Business Hours</h4>
+                                        <p className="contact-data">Mon - Sun: 9:00 AM to 9:30 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="contact-social">
+                                {socialLinks.map((link, index) => (
+                                    <a href={link.url} target="_blank" className="contact-social-link" key={index}>
+                                        <ion-icon name={link.icon}></ion-icon>
+                                    </a>
+                                ))}
+                            </div>
+                            <a href="https://www.google.com/maps/dir//No+14,+Ground+floor,+Nawab+Walajah+Shopping+Mall,+NSB+Rd,+behind+Rathna+Stores,+Singarathope,+Tharanallur,+Tiruchirappalli,+Tamil+Nadu+620002/@10.4595456,79.2199168,10z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3baaf568e520086b:0xf2da61cc28adbf0b!2m2!1d78.6948533!2d10.8259714?entry=ttu"
+                                target="_blank"
+                                className="btn btn-primary"
+                                style={{ marginTop: '2rem' }}>
+                                <ion-icon name="navigate-outline"></ion-icon> Get Directions
+                            </a>
+                        </div>
+                        <div className="contact-map">
+                            <iframe src="https://maps.google.com/maps?q=Dodo+Money+Changer+Pvt.+Ltd.+Trichy&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                width="100%" height="450" style={{ border: 0, borderRadius: '1rem' }} allowFullScreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        // Footer Component - Elegant Redesign
+        function Footer() {
+            const quickLinks = [
+                { label: 'Home', href: '#hero' },
+                { label: 'Services', href: '#services' },
+                { label: 'Contact', href: '#contact' }
+            ];
+
+            const socialLinks = [
+                { icon: 'logo-instagram', url: 'https://www.instagram.com/dodomoneychanger/', label: 'Instagram' },
+                { icon: 'logo-linkedin', url: 'https://in.linkedin.com/company/dodomoneychanger', label: 'LinkedIn' },
+                { icon: 'logo-whatsapp', url: 'https://wa.me/919384444069', label: 'WhatsApp' }
+            ];
+
+            return (
+                <footer className="footer">
+                    {/* Decorative top line */}
+                    <div className="footer-line"></div>
+
+                    <div className="container footer-container">
+                        {/* Brand Column */}
+                        <div className="footer-brand">
+                            <a href="#" className="footer-logo">
+                                <img src="src/favicon.png" alt="Dodo Money Changer" className="footer-logo-img" />
+                            </a>
+                            <p className="footer-tagline">
+                                Trusted currency exchange<br />services since 2015
+                            </p>
+                            <div className="footer-social">
+                                {socialLinks.map((link, index) => (
+                                    <a href={link.url} target="_blank" className="footer-social-link" key={index} title={link.label}>
+                                        <ion-icon name={link.icon}></ion-icon>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Quick Links */}
+                        <div className="footer-links">
+                            <h4 className="footer-heading">Quick Links</h4>
+                            <ul className="footer-nav">
+                                {quickLinks.map((link, index) => (
+                                    <li key={index}>
+                                        <a href={link.href} className="footer-nav-link">{link.label}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Contact Info */}
+                        <div className="footer-contact">
+                            <h4 className="footer-heading">Contact</h4>
+                            <div className="footer-contact-item">
+                                <ion-icon name="location-outline"></ion-icon>
+                                <span>Trichy, Tamil Nadu</span>
+                            </div>
+                            <div className="footer-contact-item">
+                                <ion-icon name="call-outline"></ion-icon>
+                                <span>+91 93844 44069</span>
+                            </div>
+                            <div className="footer-contact-item">
+                                <ion-icon name="time-outline"></ion-icon>
+                                <span>9 AM - 9:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Bottom bar */}
+                    <div className="footer-bottom">
+                        <div className="container footer-bottom-content">
+                            <p className="footer-copyright">© 2026 Dodo Money Changer Pvt. Ltd.</p>
+                            <p className="footer-rbi"><ion-icon name="shield-checkmark"></ion-icon> RBI Licensed Money Changer</p>
+                        </div>
+                    </div>
+                </footer >
+            );
+        }
+
+        // Scroll Reveal Hook
+        function useScrollReveal() {
+            useEffect(() => {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                            // Optionally unobserve after reveal
+                            // observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe all reveal elements
+                const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .section-title');
+                revealElements.forEach(el => observer.observe(el));
+
+                return () => observer.disconnect();
+            }, []);
+        }
+
+        // Enhanced Cursor Hook
+        function useEnhancedCursor() {
+            useEffect(() => {
+                const cursor = document.querySelector('.cursor');
+                const cursor2 = document.querySelector('.cursor2');
+
+                const interactiveElements = document.querySelectorAll('a, button, .btn, .services-card, .contact-social-link, .nav-link');
+
+                interactiveElements.forEach(el => {
+                    el.addEventListener('mouseenter', () => {
+                        if (cursor) {
+                            cursor.classList.add('hover');
+                        }
+                        if (cursor2) {
+                            cursor2.classList.add('hover');
+                        }
+                    });
+                    el.addEventListener('mouseleave', () => {
+                        if (cursor) {
+                            cursor.classList.remove('hover');
+                        }
+                        if (cursor2) {
+                            cursor2.classList.remove('hover');
+                        }
+                    });
+                });
+            }, []);
+        }
+
+        // Reviews Component
+        function Reviews() {
+            const reviews = [
+                {
+                    name: "Rajesh Kumar",
+                    date: "2 months ago",
+                    rating: 5,
+                    text: "Excellent service! Best rates in Trichy compared to others. Very professional staff and quick transaction."
+                },
+                {
+                    name: "Priya S",
+                    date: "1 month ago",
+                    rating: 5,
+                    text: "Highly recommended for students. Using their forex card for my UK studies, very smooth experience."
+                },
+                {
+                    name: "Mohamed R",
+                    date: "3 weeks ago",
+                    rating: 5,
+                    text: "Doorstep delivery was very helpful. Genuine rates and transparent process. Will definitely visit again."
+                }
+            ];
+
+            return (
+                <section className="reviews-section">
+                    <div className="container">
+                        <div className="section-header">
+                            <h2 className="section-title">Customer Reviews</h2>
+                            <p className="section-subtitle">What people say about us</p>
+                        </div>
+
+                        <div className="reviews-grid">
+                            {reviews.map((review, index) => (
+                                <div className="review-card" key={index}>
+                                    <div className="review-header">
+                                        <div className="review-avatar">{review.name.charAt(0)}</div>
+                                        <div className="review-info">
+                                            <h4 className="review-name">{review.name}</h4>
+                                            <span className="review-date">{review.date}</span>
+                                        </div>
+                                        <div className="review-google-icon">
+                                            <ion-icon name="logo-google"></ion-icon>
+                                        </div>
+                                    </div>
+                                    <div className="review-stars">
+                                        {[...Array(review.rating)].map((_, i) => (
+                                            <ion-icon name="star" key={i}></ion-icon>
+                                        ))}
+                                    </div>
+                                    <p className="review-text">{review.text}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="reviews-footer">
+                            <a href="https://www.google.com/search?si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E3QK7GvLo2zQqneG3nZnuVq1EHCHEjlbCVzK8PaFwQSDXPEXpKW0EkWptlfA-z37WyHDyZlHSZrpJfqySgUxCgtL2hPRyaRDsa6RX_waSyvXWdeJCg%3D%3D&q=Dodo+Money+Changer+Pvt.+Ltd.+Reviews"
+                                target="_blank"
+                                className="btn btn-secondary">
+                                View all Google Reviews <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        // Main App Component
+        function App() {
+            const [loading, setLoading] = React.useState(true);
+            const [fadeOut, setFadeOut] = React.useState(false);
+
+            React.useEffect(() => {
+                const timer = setTimeout(() => {
+                    setFadeOut(true);
+                    setTimeout(() => setLoading(false), 800);
+                }, 2500);
+                return () => clearTimeout(timer);
+            }, []);
+
+            useScrollReveal();
+            useEnhancedCursor();
+
+            return (
+                <div className="main-wrapper">
+                    {loading && <LoadingScreen fadeOut={fadeOut} />}
+                    <CustomCursor />
+                    <Header />
+                    <main className="main">
+                        <Hero />
+                        <Stats />
+                        <Services />
+                        <Reviews /> {/* Added Reviews Section */}
+                        <Contact />
+                    </main>
+                    <Footer />
+                </div>
+            );
+        }
+
+        // Render
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>

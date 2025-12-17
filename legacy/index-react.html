@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dodo Money Changer - Reliable currency exchange services in Trichy, Tamil Nadu.">
+    <title>Dodo Money Changer | Trichy's Trusted Forex Service</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/jpg" href="src/logo.jpg">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // LoadingScreen Component
+        function LoadingScreen() {
+            const [fadeOut, setFadeOut] = useState(false);
+            useEffect(() => {
+                const timer = setTimeout(() => setFadeOut(true), 1500);
+                return () => clearTimeout(timer);
+            }, []);
+
+            return (
+                <div className={`loading-screen ${fadeOut ? 'fade-out' : ''}`}>
+                    <h1 className="loading-title">Dodo Money Changer</h1>
+                    <p className="loading-subtitle">Currency Exchange &bull; Trichy</p>
+                    <div className="loading-spinner"></div>
+                </div>
+            );
+        }
+
+        // CustomCursor Component
+        function CustomCursor() {
+            useEffect(() => {
+                const cursor = document.querySelector('.cursor');
+                const cursor2 = document.querySelector('.cursor2');
+                const handleMouseMove = (e) => {
+                    if (cursor && cursor2) {
+                        cursor.style.cssText = `left: ${e.clientX}px; top: ${e.clientY}px;`;
+                        cursor2.style.cssText = `left: ${e.clientX}px; top: ${e.clientY}px;`;
+                    }
+                };
+                document.addEventListener('mousemove', handleMouseMove);
+                return () => document.removeEventListener('mousemove', handleMouseMove);
+            }, []);
+
+            return (
+                <>
+                    <div className="cursor"></div>
+                    <div className="cursor2"></div>
+                    <div className="noise-overlay"></div>
+                </>
+            );
+        }
+
+        // Header Component
+        function Header() {
+            return (
+                <header className="header">
+                    <div className="container header-container">
+                        <a href="#" className="logo">
+                            <img src="src/logo.jpg" alt="Dodo Money Changer Logo" className="logo-img" />
+                            Dodo Money Changer
+                        </a>
+                        <nav className="nav">
+                            <ul className="nav-list">
+                                <li className="nav-item"><a href="#hero" className="nav-link active">Home</a></li>
+                                <li className="nav-item"><a href="#services" className="nav-link">Services</a></li>
+                                <li className="nav-item"><a href="#stats" className="nav-link">Stats</a></li>
+                                <li className="nav-item"><a href="#contact" className="nav-link">Contact</a></li>
+                            </ul>
+                        </nav>
+                        <div className="header-actions">
+                            <a href="#contact" className="btn btn-primary btn-sm">Get Rates</a>
+                        </div>
+                    </div>
+                </header>
+            );
+        }
+
+        // Hero Component
+        function Hero() {
+            return (
+                <section className="home" id="hero">
+                    <div className="home-bg"></div>
+                    <div className="container home-container">
+                        <div className="home-data">
+                            <span className="home-subtitle">RBI Licensed Money Changer</span>
+                            <h1 className="home-title">Clear Rates. <br /> Quick Exchange. <br /> <em>Zero Confusion.</em></h1>
+                            <p className="home-description">
+                                Reliable currency exchange in Trichy since 2015. We offer competitive rates or hassle-free student forex with home & airport delivery.
+                            </p>
+                            <div className="home-btns">
+                                <a href="#contact" className="btn btn-primary">
+                                    Get Quote <ion-icon name="arrow-forward-outline"></ion-icon>
+                                </a>
+                                <a href="https://wa.me/919384444069" target="_blank" className="btn btn-secondary">
+                                    <ion-icon name="logo-whatsapp"></ion-icon> WhatsApp Us
+                                </a>
+                            </div>
+                        </div>
+                        <div className="home-img-container">
+                            <div className="hero-shape"></div>
+                            <img src="src/seal.jpg" className="hero-seal" alt="Dodo Money Changer Official Seal" />
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        // Stats Component
+        function Stats() {
+            const stats = [
+                { icon: 'people-outline', number: '100,000+', title: 'Happy Customers' },
+                { icon: 'globe-outline', number: '25+', title: 'Currencies Available' },
+                { icon: 'calendar-outline', number: '9+', title: 'Years Experience' },
+                { icon: 'time-outline', number: '7 Days', title: 'Open Per Week' }
+            ];
+
+            return (
+                <section className="stats section" id="stats">
+                    <div className="container stats-container grid">
+                        {stats.map((stat, index) => (
+                            <div className="stats-item" key={index}>
+                                <div className="stats-icon"><ion-icon name={stat.icon}></ion-icon></div>
+                                <h3 className="stats-number">{stat.number}</h3>
+                                <p className="stats-title">{stat.title}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        // Services Component
+        function Services() {
+            const services = [
+                {
+                    icon: 'cash-outline',
+                    title: 'Currency Exchange',
+                    features: ['25+ Currencies Available', 'Current Market Rates', 'Same-day Service', 'Zero Hidden Charges']
+                },
+                {
+                    icon: 'school-outline',
+                    title: 'Student Forex',
+                    features: ['Document Prep Support', 'Travel Cards Available', 'Step-by-step Guidance', 'Student-friendly Rates']
+                },
+                {
+                    icon: 'airplane-outline',
+                    title: 'Home & Airport Delivery',
+                    features: ['Secure Transport', 'Flexible Timing', 'Airport Handover', 'No Delivery Charges']
+                }
+            ];
+
+            return (
+                <section className="services section" id="services">
+                    <h2 className="section-title">Our Services</h2>
+                    <div className="container services-container grid">
+                        {services.map((service, index) => (
+                            <div className="services-card" key={index}>
+                                <div className="services-icon"><ion-icon name={service.icon}></ion-icon></div>
+                                <h3 className="services-title">{service.title}</h3>
+                                <ul className="services-list">
+                                    {service.features.map((feature, idx) => (
+                                        <li key={idx}><ion-icon name="checkmark-circle-outline"></ion-icon> {feature}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        // Contact Component
+        function Contact() {
+            const contactInfo = [
+                { icon: 'location-outline', label: 'Address', data: 'No 14, Ground Floor, Nawab Walaja Complex, N.S.B Road, Singarathope, Trichy 620002' },
+                { icon: 'call-outline', label: 'Phone', data: '+91 93844 44069' },
+                { icon: 'mail-outline', label: 'Email', data: 'dodomoneychanger@gmail.com' },
+                { icon: 'time-outline', label: 'Business Hours', data: 'Mon - Sun: 9:00 AM to 9:30 PM' }
+            ];
+
+            const socialLinks = [
+                { icon: 'logo-instagram', url: 'https://www.instagram.com/dodomoneychanger/' },
+                { icon: 'logo-linkedin', url: 'https://in.linkedin.com/company/dodomoneychanger' },
+                { icon: 'logo-whatsapp', url: 'https://wa.me/919384444069' }
+            ];
+
+            return (
+                <section className="contact section" id="contact">
+                    <h2 className="section-title">Contact Us</h2>
+                    <div className="container contact-container grid">
+                        <div className="contact-info">
+                            <h3 className="contact-subtitle">Get in Touch</h3>
+                            <p className="contact-description">To confirm your rates or enquire, you can book via call.</p>
+                            <div className="contact-content">
+                                {contactInfo.map((item, index) => (
+                                    <div className="contact-item" key={index}>
+                                        <div className="contact-icon"><ion-icon name={item.icon}></ion-icon></div>
+                                        <div>
+                                            <h4 className="contact-label">{item.label}</h4>
+                                            <p className="contact-data">{item.data}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="contact-social">
+                                {socialLinks.map((link, index) => (
+                                    <a href={link.url} target="_blank" className="contact-social-link" key={index}>
+                                        <ion-icon name={link.icon}></ion-icon>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="contact-map">
+                            <iframe src="https://maps.google.com/maps?q=Dodo+Money+Changer+Pvt.+Ltd.+Trichy&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                width="100%" height="450" style={{ border: 0, borderRadius: '1rem' }} allowFullScreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        // Footer Component
+        function Footer() {
+            return (
+                <footer className="footer section">
+                    <div className="container footer-container">
+                        <div className="footer-content">
+                            <a href="#" className="footer-logo">Dodo Money Changer</a>
+                            <p className="footer-text">Reliable currency exchange services in Trichy since 2015.</p>
+                        </div>
+                        <div className="footer-rights">
+                            <p>&copy; 2026 Dodo Money Changer Pvt. Ltd. All rights reserved.</p>
+                        </div>
+                    </div>
+                </footer>
+            );
+        }
+
+        // Main App Component
+        function App() {
+            return (
+                <div className="dark-theme">
+                    <LoadingScreen />
+                    <CustomCursor />
+                    <Header />
+                    <main className="main">
+                        <Hero />
+                        <Stats />
+                        <Services />
+                        <Contact />
+                    </main>
+                    <Footer />
+                </div>
+            );
+        }
+
+        // Render
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
