@@ -401,6 +401,14 @@ img {
         0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
+.btn-sm {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.8rem;
+    border-radius: 50px;
+    gap: 8px;
+    height: auto;
+}
+
 /* === HEADER === */
 .header {
     width: 100%;
@@ -1708,6 +1716,42 @@ button:hover~.cursor,
         cursor: pointer;
         color: #1a1a1a;
         display: block;
+    }
+
+    /* === MOBILE HEADER ADJUSTMENTS === */
+    .header {
+        height: 3.5rem;
+        /* Compact header */
+    }
+
+    .header-container {
+        padding: 0 1rem;
+        /* Tighter padding */
+        justify-content: space-between;
+    }
+
+    .logo {
+        font-size: 0.9rem;
+        /* Smaller logo text */
+        gap: 0.5rem;
+    }
+
+    .logo-img {
+        height: 32px;
+        /* Smaller logo image */
+    }
+
+    .nav-toggle {
+        font-size: 1.6rem;
+        margin-left: 0.8rem;
+    }
+
+    /* Ensure Get Rates button is visible but compact */
+    .header-actions .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        display: flex !important;
+        /* Force show */
     }
 
     /* === HERO SECTION MOBILE === */
