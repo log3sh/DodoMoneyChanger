@@ -17,3 +17,9 @@ This project is a **web application** built to display exchange information and 
 - Spline (3D / interactive visuals)
 - Ionicons
 - Vercel / Netlify (deployment)
+- JavaScript (ES6+)
+-  HTML5 
+- CSS3 
+- Git 
+- GitHub
+- VS Code
