@@ -1,16 +1,62 @@
-# React + Vite
+# Dodo Money Changer - Premium Forex Interface
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Dodo Money Changer](https://dodomoneychanger.vercel.app/assets/screenshot.png) 
+*(Replace this link with your actual screenshot URL)*
 
-Currently, two official plugins are available:
+A high-performance, mobile-first web application designed for **Dodo Money Changer**, a trusted automated licensed currency exchange service in Trichy. This project demonstrates a focus on **visual excellence**, **micro-interactions**, and **user-centric navigation**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Innovation & Key Features
 
-## React Compiler
+This isn't just a landing page; it's a polished user experience with several custom-tailored innovations:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 📱 "Smart Scroll" Deep Linking (UX)
+*   **Context-Aware Navigation**: The "Get Rates" CTA is engineered to bypass generic section headers. On mobile, it intelligently scrolls deeply past the map to land exactly on the **Phone & Address** details, ensuring the most critical user goal (calling/visiting) is immediate and unobstructed by sticky headers.
+*   **Scroll Margin Logic**: Custom CSS architecture ensures anchor links land perfectly with precise offset calculations, accounting for the floating glass header.
 
-## Expanding the ESLint configuration
+### 🎨 Premium Glassmorphism UI
+*   **Modern Aesthetic**: Built with a "Ditto" Light Theme using frosted glass effects (`backdrop-filter: blur`), organic gradients (`radial-gradient`), and subtle shadows.
+*   **Micro-Animations**: Custom CSS animations for entry (fade-up), hover states (cards lifting), and interactive elements (pulse effects).
+*   **Responsive Design**: A fluid layout that transforms from a multi-column desktop grid to a strictly stacked, centered mobile experience.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### ⚡ Performance First
+*   **Zero-Bloat**: No heavy UI frameworks (Bootstrap/Tailwind). All styling is **Hand-Crafted Vanilla CSS** for maximum performance and pixel-perfect control.
+*   **Native Feel**: Removal of default touch delays and custom cursors for touch devices to ensure the app feels like a native mobile experience.
+
+## 🛠️ Tech Stack
+
+Built with the latest cutting-edge web technologies:
+
+*   **Core**: [React 19](https://react.dev/) - The latest standard in UI libraries.
+*   **Build Tool**: [Vite 7](https://vitejs.dev/) - Lightning-fast HMR and bundling.
+*   **Styling**: **Advanced CSS3** (Variables, Grid, Flexbox, Animations).
+*   **Icons**: [Ionicons](https://ionic.io/ionicons) - Crisp, vector-based iconography.
+*   **Deployment**: Vercel / Netlify ready.
+
+## 📂 Project Structure
+
+```
+/src
+  ├── /components    # Modular UI blocks (Hero, Header, Stats, etc.)
+  ├── /assets        # Optimized images and favicons
+  ├── App.jsx        # Main application logic
+  └── index.css      # The global style engine
+```
+
+## 🔧 Getting Started
+
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/log3sh/DodoMoneyChanger.git
+    ```
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
+3.  **Run Development Server**
+    ```bash
+    npm run dev
+    ```
+
+## © Credits
+Developed for Dodo Money Changer. 
+*Reliable currency exchange in Trichy since 2015.*
