@@ -1666,133 +1666,59 @@ button:hover~.cursor,
 }
 
 /* === RESPONSIVE === */
-/* === RESPONSIVE === */
+/* === RESPONSIVE ALIGNMENT OVERHAUL === */
 @media screen and (max-width: 968px) {
     :root {
         --big-font-size: 2.5rem;
-        --h1-font-size: 2rem;
+        --h1-font-size: 2.2rem;
         --section-title-size: 1.7rem;
-        /* Slightly focused mobile typography */
     }
 
     .container {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
-        /* More breathing room on edges */
+        /* "Proper padding space" */
     }
 
-    /* === MOBILE MENU === */
-    .nav {
-        position: fixed;
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        top: -100%;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        z-index: 100;
-        opacity: 0;
-        visibility: hidden;
+    /* === HEADER ALIGNMENT === */
+    .header {
+        height: 4rem;
+        /* Compromise between compact and spacious */
     }
 
-    .nav.show-menu {
-        top: 0;
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .nav-list {
-        flex-direction: column;
-        align-items: center;
-        gap: 2.5rem;
-    }
-
-    .nav-link {
-        font-size: 1.2rem;
-        color: #1a1a1a;
-        font-weight: 500;
+    .header-container {
+        padding: 0 1.5rem;
+        justify-content: space-between;
+        /* Strict Left-Right */
     }
 
     .nav-toggle {
         display: block;
-        cursor: pointer;
-        font-size: 1.8rem;
-        color: #1a1a1a;
         margin-left: 1rem;
-        z-index: 101;
-    }
-
-    .nav-close {
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-        font-size: 2.5rem;
-        /* Larger touch target */
-        cursor: pointer;
-        color: #1a1a1a;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 48px;
-        height: 48px;
-        background: rgba(0, 0, 0, 0.05);
-        /* Subtle circle bg */
-        border-radius: 50%;
-        transition: all 0.3s ease;
-    }
-
-    .nav-close:active {
-        background: rgba(0, 0, 0, 0.1);
-        transform: scale(0.95);
-    }
-
-    /* === MOBILE HEADER ADJUSTMENTS === */
-    .header {
-        height: 3.5rem;
-        /* Compact header */
-    }
-
-    .header-container {
-        padding: 0 1rem;
-        /* Tighter padding */
-        justify-content: space-between;
+        font-size: 1.8rem;
     }
 
     .logo {
-        font-size: 0.9rem;
-        /* Smaller logo text */
-        gap: 0.5rem;
+        font-size: 0.95rem;
     }
 
     .logo-img {
-        height: 32px;
-        /* Smaller logo image */
+        height: 36px;
     }
 
-    .nav-toggle {
-        font-size: 1.6rem;
-        margin-left: 0.8rem;
-    }
-
-    /* Ensure Get Rates button is visible but compact */
     .header-actions .btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.75rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
         display: flex !important;
-        /* Force show */
     }
 
-    /* === HERO SECTION MOBILE === */
+    /* === HERO CENTERED === */
     .home {
         height: auto;
         padding-top: 8rem;
-        padding-bottom: 4rem;
+        padding-bottom: 5rem;
         text-align: center;
+        /* Force Center */
     }
 
     .home-container {
@@ -1801,125 +1727,236 @@ button:hover~.cursor,
     }
 
     .home-data {
+        padding-right: 0;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        /* Center align text content */
-    }
-
-    .trust-badges {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.8rem;
-    }
-
-    .trust-badge {
-        font-size: 0.8rem;
     }
 
     .home-title {
         font-size: 2.2rem;
-        /* Ensure readable on phone */
-        margin-bottom: 1rem;
+        line-height: 1.2;
     }
 
     .home-description {
         margin-left: auto;
         margin-right: auto;
-        /* Center description */
-        max-width: 100%;
+        font-size: 1.1rem;
+    }
+
+    .trust-badges {
+        justify-content: center;
+        margin-bottom: 2.5rem;
     }
 
     .home-btns {
         justify-content: center;
-        flex-direction: column;
-        /* Stack buttons on small phones */
-        gap: 1rem;
         width: 100%;
+        gap: 1rem;
+        flex-wrap: wrap;
     }
 
     .home-btns .btn {
-        width: 100%;
-        /* Full width buttons for touch targets */
-        justify-content: center;
+        min-width: 140px;
+        /* Uniform buttons */
     }
 
-    /* === SECTIONS STACKING === */
-    .contact-container,
+    /* === SECTIONS CENTERED === */
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
     .stats-container,
     .services-container,
+    .contact-container,
     .footer-container {
         grid-template-columns: 1fr;
+        gap: 3.5rem;
     }
 
-    .stats-container {
-        gap: 2rem;
+    /* Stats */
+    .stats-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 2.5rem 1rem;
     }
 
-    /* === RATES CARD MOBILE === */
-    .home-img-container {
-        width: 100%;
-        margin-top: 0;
+    .stats-item:last-child {
+        border-bottom: none;
     }
 
-    .rates-card {
-        padding: 1.5rem;
-        /* Reduce padding slightly */
-    }
-
-    .rates-buttons {
+    /* Services */
+    .services-card {
+        padding: 2rem 1.5rem;
+        text-align: center;
+        display: flex;
         flex-direction: column;
-        /* Stack Call/WhatsApp buttons */
+        align-items: center;
+    }
+
+    .services-list {
+        align-items: center;
+        /* Center list items */
+        width: 100%;
+        display: flex;
+        flex-direction: column;
         gap: 0.8rem;
     }
 
-    .rates-btn {
+    .services-list li {
+        justify-content: center;
         width: 100%;
+    }
+
+    /* Reviews */
+    .reviews-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .review-card {
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .review-header {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+    }
+
+    .review-stars {
         justify-content: center;
     }
 
-    /* === FOOTER MOBILE === */
-    .footer-container {
-        gap: 2.5rem;
+    /* Contact */
+    .contact-container {
         text-align: center;
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        order: 2;
+        /* Map first? No, Info first usually better for mobile, let's keep default order */
+    }
+
+    .contact-item {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 0.8rem;
+        width: 100%;
+    }
+
+    .contact-social-link {
+        margin: 0 0.8rem;
+    }
+
+    /* Footer */
+    .footer-container {
+        text-align: center;
+        gap: 3rem;
     }
 
     .footer-brand,
     .footer-logo,
-    .footer-social,
-    .footer-nav,
-    .footer-contact-item {
+    .footer-social {
         justify-content: center;
         align-items: center;
-        text-align: center;
     }
 
     .footer-brand {
         align-items: center;
     }
 
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-contact-item {
+        justify-content: center;
+    }
+
     .footer-bottom-content {
         flex-direction: column;
-        gap: 0.8rem;
+        gap: 1rem;
         text-align: center;
     }
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media screen and (max-width: 576px) {
-    :root {
-        --big-font-size: 2rem;
-        --h1-font-size: 1.8rem;
-    }
-
-    .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
+/* Extra small refinements */
+@media screen and (max-width: 400px) {
     .home-title {
         font-size: 1.8rem;
     }
 
-    .review-card {
-        padding: 1.5rem;
+    .btn {
+        padding: 1rem 1.5rem;
+        /* Slightly smaller */
     }
+}
+
+/* === MOBILE MENU (Global Rules) === */
+.nav {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.nav.show-menu {
+    top: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.nav-link {
+    font-size: 1.4rem;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+.nav-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.nav-close:active {
+    background: rgba(0, 0, 0, 0.1);
+    transform: scale(0.95);
 }
