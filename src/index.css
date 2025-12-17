@@ -278,6 +278,21 @@ img {
     transform: translate(-50%, -50%) scale(0);
 }
 
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+
+    .cursor,
+    .cursor2 {
+        display: none !important;
+    }
+
+    *,
+    a,
+    button {
+        cursor: auto !important;
+    }
+}
+
 /* === NOISE OVERLAY (Nothing Texture) === */
 .noise-overlay {
     position: fixed;
@@ -1710,12 +1725,26 @@ button:hover~.cursor,
 
     .nav-close {
         position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
-        font-size: 2rem;
+        top: 2rem;
+        right: 2rem;
+        font-size: 2.5rem;
+        /* Larger touch target */
         cursor: pointer;
         color: #1a1a1a;
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 48px;
+        height: 48px;
+        background: rgba(0, 0, 0, 0.05);
+        /* Subtle circle bg */
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+
+    .nav-close:active {
+        background: rgba(0, 0, 0, 0.1);
+        transform: scale(0.95);
     }
 
     /* === MOBILE HEADER ADJUSTMENTS === */
