@@ -1713,6 +1713,8 @@ button:hover~.cursor,
         display: block;
         margin-left: 0;
         font-size: 2rem;
+        margin-top: 5px;
+        /* Move lil down */
     }
 
     .logo {
@@ -1744,6 +1746,8 @@ button:hover~.cursor,
 
     .home-data {
         padding-right: 0;
+        padding-left: 10px;
+        /* Move lil right */
         display: flex;
         flex-direction: column;
         align-items: center;
