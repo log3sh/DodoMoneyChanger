@@ -26,6 +26,10 @@ export default function Header() {
                         <li className="nav-item">
                             <a href="#contact" className="nav-link" onClick={() => setShowMenu(false)}>Contact</a>
                         </li>
+                        {/* Mobile CTA Button */}
+                        <li className="nav-item mobile-cta">
+                            <a href="#contact" className="btn btn-primary" onClick={() => setShowMenu(false)}>Get Rates</a>
+                        </li>
                     </ul>
                     {/* Close button for mobile menu */}
                     <div className="nav-close" onClick={() => setShowMenu(false)}>
@@ -34,7 +38,7 @@ export default function Header() {
                 </div>
 
                 <div className="header-actions">
-                    <a href="#contact" className="btn btn-primary btn-sm">Get Rates</a>
+                    <a href="#contact" className="btn btn-primary btn-sm desktop-only">Get Rates</a>
                     {/* Hamburger button */}
                     <div className="nav-toggle" onClick={() => setShowMenu(true)}>
                         <ion-icon name="menu-outline"></ion-icon>

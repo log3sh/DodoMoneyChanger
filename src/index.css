@@ -1677,13 +1677,16 @@ button:hover~.cursor,
     .container {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
-        /* "Proper padding space" */
+    }
+
+    .mobile-cta {
+        display: none;
     }
 
     /* === HEADER ALIGNMENT === */
     .header {
-        height: 4rem;
-        /* Compromise between compact and spacious */
+        height: 4.5rem;
+        /* More space */
     }
 
     .header-container {
@@ -1692,10 +1695,24 @@ button:hover~.cursor,
         /* Strict Left-Right */
     }
 
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-cta {
+        display: block;
+        margin-top: 1rem;
+    }
+
+    .mobile-cta .btn {
+        padding: 0.8rem 2.5rem;
+        font-size: 1.1rem;
+    }
+
     .nav-toggle {
         display: block;
-        margin-left: 1rem;
-        font-size: 1.8rem;
+        margin-left: 0;
+        font-size: 2rem;
     }
 
     .logo {
@@ -1707,9 +1724,8 @@ button:hover~.cursor,
     }
 
     .header-actions .btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.8rem;
-        display: flex !important;
+        display: none !important;
+        /* Double ensure hidden */
     }
 
     /* === HERO CENTERED === */
