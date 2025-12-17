@@ -12,7 +12,7 @@ export default function Hero() {
                     </div>
                     <h1 className="home-title">Clear Rates. <br /> Quick Exchange. <br /> <em>Zero Confusion.</em></h1>
                     <p className="home-description">
-                        Reliable currency exchange in Trichy since 2015. We offer competitive rates or hassle-free student forex with home & airport delivery.
+                        Reliable currency exchange in Trichy since 2015.
                     </p>
                     <div className="home-btns">
                         <a href="#contact" className="btn btn-primary">
