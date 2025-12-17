@@ -7,7 +7,7 @@ import Reviews from './components/Reviews'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import LoadingScreen from './components/LoadingScreen'
-import CustomCursor from './components/CustomCursor'
+
 import useScrollReveal from './hooks/useScrollReveal'
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
   return (
     <div className="main-wrapper">
       {loading && <LoadingScreen fadeOut={fadeOut} />}
-      <CustomCursor />
+
       <Header />
       <main className="main">
         <Hero />
