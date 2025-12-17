@@ -523,6 +523,10 @@ img {
     color: var(--text-color);
 }
 
+.nav-close {
+    display: none;
+}
+
 /* === HERO SECTION === */
 .home {
     height: 100vh;
