@@ -703,16 +703,13 @@ img {
 }
 
 .home-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 5rem;
-    /* Desktop Base */
-    letter-spacing: -1.5px;
-    line-height: 1.1;
-    margin-bottom: 2rem;
-    color: #1a1a1a;
-    font-weight: 500;
-    /* Lighter weight for elegance */
-    padding-top: 2rem;
+    font-size: 7vw;
+    letter-spacing: -2px;
+    line-height: 0.85;
+    margin-bottom: 2.5rem;
+    color: #000000;
+    font-weight: 700;
+    /* Bold for Playfair */
 }
 
 .home-description {
@@ -725,20 +722,9 @@ img {
     /* Medium weight */
 }
 
-
-
-.home-description {
-    font-size: 1.35rem;
-    color: var(--text-color-light);
-    max-width: 600px;
-    margin-bottom: 3rem;
-    line-height: 1.8;
-    font-weight: 400;
-}
-
 .home-btns {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 /* === EXCHANGE RATES CTA CARD === */
