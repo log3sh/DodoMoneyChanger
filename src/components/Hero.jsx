@@ -4,16 +4,19 @@ export default function Hero() {
             <div className="home-bg"></div>
             <div className="container home-container">
                 <div className="home-data">
-                    <div className="trust-badges">
-                        <span className="trust-badge"><ion-icon name="checkmark-outline"></ion-icon> RBI Licensed</span>
-                        <span className="trust-badge"><ion-icon name="checkmark-outline"></ion-icon> Same Day Service</span>
-                        <span className="trust-badge"><ion-icon name="checkmark-outline"></ion-icon> Fair & Clear Pricing</span>
-                        <span className="trust-badge"><ion-icon name="checkmark-outline"></ion-icon> Home & Airport Delivery</span>
-                    </div>
-                    <h1 className="home-title">Clear Rates. <br /> Quick Exchange. <br /> <em>Zero Confusion.</em></h1>
+                    <h1 className="home-title">
+                        Effortless currency <br /> exchange by Dodo
+                    </h1>
                     <p className="home-description">
-                        Reliable currency exchange in Trichy since 2015. We offer competitive rates or hassle-free student forex with home & airport delivery.
+                        Streamline your foreign exchange with competitive rates, zero confusion, and same-day home delivery in Trichy.
                     </p>
+
+                    <div className="trust-badges" style={{ marginBottom: '2.5rem', justifyContent: 'flex-start' }}>
+                        <span className="trust-badge"><ion-icon name="checkmark-circle"></ion-icon> RBI Licensed</span>
+                        <span className="trust-badge"><ion-icon name="time"></ion-icon> Same Day Service</span>
+                        <span className="trust-badge"><ion-icon name="wallet"></ion-icon> Zero Commission</span>
+                    </div>
+
                     <div className="home-btns">
                         <a href="#contact" className="btn btn-primary">
                             Get Quote <ion-icon name="arrow-forward-outline"></ion-icon>
