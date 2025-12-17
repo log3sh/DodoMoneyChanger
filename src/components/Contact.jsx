@@ -19,7 +19,7 @@ export default function Contact() {
                 <div className="contact-info">
                     <h3 className="contact-subtitle">Get in Touch</h3>
                     <p className="contact-description">To confirm your rates or enquire, you can book via call.</p>
-                    <div className="contact-content">
+                    <div className="contact-content" id="contact-details">
                         <div className="contact-item">
                             <div className="contact-icon"><ion-icon name="location-outline"></ion-icon></div>
                             <div>

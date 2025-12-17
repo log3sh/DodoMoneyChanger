@@ -15,7 +15,7 @@ export default function Hero() {
                         Reliable currency exchange in Trichy since 2015.
                     </p>
                     <div className="home-btns">
-                        <a href="#contact" className="btn btn-primary">
+                        <a href="#contact-details" className="btn btn-primary">
                             Get Quote <ion-icon name="arrow-forward-outline"></ion-icon>
                         </a>
                         <a href="https://wa.me/919384444069" target="_blank" className="btn btn-secondary">
