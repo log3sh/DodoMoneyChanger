@@ -1,4 +1,4 @@
-import favicon from '../assets/favicon.png';
+import logo from '../assets/logo.png';
 
 export default function Footer() {
     const quickLinks = [
@@ -22,7 +22,7 @@ export default function Footer() {
                 {/* Brand Column */}
                 <div className="footer-brand">
                     <a href="#" className="footer-logo">
-                        <img src={favicon} alt="Dodo Money Changer" className="footer-logo-img" />
+                        <img src={logo} alt="Dodo Money Changer" className="footer-logo-img" />
                     </a>
                     <p className="footer-tagline">
                         Trusted currency exchange<br />services since 2015.
