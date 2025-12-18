@@ -15,6 +15,9 @@ export default function SmoothScroll() {
             touchMultiplier: 2,
         });
 
+        // Expose lenis globally for other components to use
+        window.lenis = lenis;
+
         function raf(time) {
             lenis.raf(time);
             requestAnimationFrame(raf);
@@ -22,16 +25,27 @@ export default function SmoothScroll() {
 
         requestAnimationFrame(raf);
 
-        // Handle anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                lenis.scrollTo(this.getAttribute('href'));
-            });
-        });
+        // Handle anchor links via event delegation (more robust)
+        const handleAnchorClick = (e) => {
+            const anchor = e.target.closest('a[href^="#"]');
+            if (anchor) {
+                const id = anchor.getAttribute('href');
+                if (id === '#') return; // Ignore empty anchors
+
+                const target = document.querySelector(id);
+                if (target) {
+                    e.preventDefault();
+                    lenis.scrollTo(target);
+                }
+            }
+        };
+
+        document.addEventListener('click', handleAnchorClick);
 
         return () => {
             lenis.destroy();
+            document.removeEventListener('click', handleAnchorClick);
+            delete window.lenis;
         };
     }, []);
 
