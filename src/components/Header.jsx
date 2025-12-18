@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import logo from '../assets/logo.jpg';
+import logo from '../assets/logo-with-flag.png';
 
 export default function Header() {
     const [showMenu, setShowMenu] = useState(false);

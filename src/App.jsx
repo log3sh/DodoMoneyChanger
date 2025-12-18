@@ -9,6 +9,7 @@ import Footer from './components/Footer'
 import LoadingScreen from './components/LoadingScreen'
 
 import useScrollReveal from './hooks/useScrollReveal'
+import SmoothScroll from './components/SmoothScroll'
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <div className="main-wrapper">
+      <SmoothScroll />
       {loading && <LoadingScreen fadeOut={fadeOut} />}
 
       <Header />
