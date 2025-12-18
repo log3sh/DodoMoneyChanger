@@ -1549,7 +1549,8 @@ a.contact-data:hover {
 @media screen and (max-width: 768px) {
     .footer-container {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 1.5rem;
+        /* Reduced from 2.5rem */
         text-align: center;
     }
 
@@ -1559,6 +1560,13 @@ a.contact-data:hover {
 
     .footer-logo {
         justify-content: center;
+    }
+
+    .footer-logo-img {
+        margin-bottom: 0.5rem;
+        /* Reduced margin for mobile */
+        height: 180px;
+        /* Slightly smaller on mobile */
     }
 
     .footer-social {
