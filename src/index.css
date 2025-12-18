@@ -1569,6 +1569,11 @@ a.contact-data:hover {
         /* Slightly smaller on mobile */
     }
 
+    .footer-tagline {
+        font-size: 0.8rem;
+        padding: 0 0.5rem;
+    }
+
     .footer-social {
         justify-content: center;
     }
