@@ -1336,9 +1336,10 @@ a.contact-data:hover {
 
 /* === ELEGANT FOOTER === */
 .footer {
-    background: #0a0a0a;
+    background: transparent;
     margin-top: 4rem;
     position: relative;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Decorative gold gradient line */
