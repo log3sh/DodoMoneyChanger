@@ -5,14 +5,15 @@ import 'lenis/dist/lenis.css';
 export default function SmoothScroll() {
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+            duration: 2.5, // Much slower, "heavier" feel
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             direction: 'vertical',
             gestureDirection: 'vertical',
             smooth: true,
-            mouseMultiplier: 1,
-            smoothTouch: false, // Touch scrolling is usually better native, but can be enabled
+            mouseMultiplier: 0.8, // Reduced for finer control
+            smoothTouch: false,
             touchMultiplier: 2,
+            wheelMultiplier: 0.8, // Added for smoother wheel interaction
         });
 
         // Expose lenis globally for other components to use
